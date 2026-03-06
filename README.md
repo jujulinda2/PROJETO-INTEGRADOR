@@ -1,7 +1,5 @@
 # PROJETO-INTEGRADOR
 
-# Projeto
-
 ## Equipe
 - Ana Luiza de Melo  
 - Anna Julia Borges  
