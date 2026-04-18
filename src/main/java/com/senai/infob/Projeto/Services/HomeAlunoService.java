@@ -2,7 +2,7 @@ package com.senai.infob.Projeto.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.senai.infob.Projeto.Models.HomeAluno;
+
 import com.senai.infob.Projeto.Repositories.HomeAlunoRepositorie;
 
 @Service

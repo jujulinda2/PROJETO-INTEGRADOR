@@ -21,8 +21,8 @@ public class HomeAlunoController {
     public HomeAlunoService HomeAlunoService;
 
     @PostMapping("/salvar")
-    public Usuario salvar (@RequestBody Usuario usuario, @RequestParam String senha) {    
-        return HomeAlunoService.salvar(usuario,senha);
+    public Usuario salvar (@RequestBody Aluno aluno, @RequestParam String senha) {    
+        return HomeAlunoService.save(aluno,senha);
     }
 
 
@@ -31,8 +31,8 @@ public class HomeAlunoController {
     return HomeAlunoService.login(email, senha);
     }
     @PutMapping("/atualizar/{id}")
-        public Usuario atualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
-            return HomeAlunoService.atualizarHomeAlunoService(usuario, id);
+        public Usuario atualizarHomeAluno(@PathVariable Integer id, @RequestBody Aluno aluno) {
+            return HomeAlunoService.atualizar(HomeAlunoService(aluno, id));
         }
 
     @GetMapping("/buscar/{id}")
