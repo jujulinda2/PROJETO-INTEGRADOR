@@ -8,35 +8,38 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.senai.infob.Projeto.Models.Usuario;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.senai.infob.Projeto.Models.HomeAluno;
 import com.senai.infob.Projeto.Services.HomeAlunoService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/aluno")
 public class HomeAlunoController {
     @Autowired
-    public HomeAlunoService HomeAlunoService;
+    public HomeAlunoService homeAlunoService;
 
     @PostMapping("/salvar")
-    public Usuario salvar (@RequestBody Aluno aluno, @RequestParam String senha) {    
-        return HomeAlunoService.save(aluno,senha);
+    public HomeAluno salvar (@RequestBody HomeAluno aluno, @RequestParam String senha) {    
+        return homeAlunoService.salvar(aluno,senha);
     }
-
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String senha){
-    return HomeAlunoService.login(email, senha);
+    public String login
+    (@RequestParam String email, @RequestParam String senha)
+    {
+    return homeAlunoService.login(email, senha);
     }
+
     @PutMapping("/atualizar/{id}")
-        public Usuario atualizarHomeAluno(@PathVariable Integer id, @RequestBody Aluno aluno) {
-            return HomeAlunoService.atualizar(HomeAlunoService(aluno, id));
+        public HomeAluno  atualizarHomeAluno
+        (@PathVariable Integer id, @RequestBody HomeAluno aluno) 
+        {
+           return HomeAlunoService.atualizar(id, aluno);
         }
 
+
     @GetMapping("/buscar/{id}")
-        public Usuario buscar (@PathVariable Integer id) {
-            return HomeAlunoService.getId(id);
+        public HomeAluno buscar (@PathVariable Integer id) {
+            return homeAlunoService.getId(id);
         }
 }

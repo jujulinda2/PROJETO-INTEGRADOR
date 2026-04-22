@@ -20,22 +20,22 @@ public class CadastroController {
 
     @Autowired
     public CadastroService CadastroService;
-          @GetMapping("/listar")
-        public List<Cadastro> listarTodos() {
+@GetMapping("/listar")
+    public List<Cadastro> listarTodos() {
             return CadastroService.listartodos();
         }
         
-    @PostMapping("/salvar")
+@PostMapping("/salvar")
     public Cadastro salvar (@RequestBody Cadastro cadastro) {    
         return CadastroService.salvar(cadastro);
     }
 
 
-    @PutMapping("/atualizar/{id}")
+@PutMapping("/atualizar/{id}")
         public Cadastro atualizarCadastro(@PathVariable Integer id, @RequestBody Cadastro cadastro ) {
             return CadastroService.atualizarCadastro(cadastro, id);
     }
-    @GetMapping("/buscar/{id}")
+@GetMapping("/buscar/{id}")
     public Cadastro buscar (@PathVariable Integer id) {
     return CadastroService.getId(id);
 }
