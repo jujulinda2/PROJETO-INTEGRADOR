@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.senai.infob.Projeto.Models.Cadastro;
 import com.senai.infob.Projeto.Services.CadastroService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -19,24 +21,27 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class CadastroController {
 
     @Autowired
-    public CadastroService CadastroService;
+    public CadastroService cadastroService;
 @GetMapping("/listar")
     public List<Cadastro> listarTodos() {
-            return CadastroService.listartodos();
+            return cadastroService.listartodos();
         }
         
 @PostMapping("/salvar")
-    public Cadastro salvar (@RequestBody Cadastro cadastro) {    
-        return CadastroService.salvar(cadastro);
+    public Cadastro salvar (@RequestBody Cadastro cadastro, @RequestParam String senha) {    
+        return cadastroService.salvar(cadastro,senha);
     }
 
 
 @PutMapping("/atualizar/{id}")
         public Cadastro atualizarCadastro(@PathVariable Integer id, @RequestBody Cadastro cadastro ) {
-            return CadastroService.atualizarCadastro(cadastro, id);
+            return cadastroService.atualizarCadastro(cadastro, id);
     }
 @GetMapping("/buscar/{id}")
     public Cadastro buscar (@PathVariable Integer id) {
-    return CadastroService.getId(id);
+    return cadastroService.getId(id);
 }
+
+
+    
 }

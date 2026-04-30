@@ -27,8 +27,8 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String senha){
-    return LoginService.login(email, senha);
+    public String login(@RequestParam String id, @RequestParam String senha){
+    return LoginService.login(id, senha);
     }
     @PutMapping("/atualizar/{id}")
         public Login  atualizarHomeLogin(@PathVariable Integer id, @RequestBody Login Login) {

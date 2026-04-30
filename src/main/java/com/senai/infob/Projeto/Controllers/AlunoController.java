@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.senai.infob.Projeto.Models.HomeAluno;
-import com.senai.infob.Projeto.Services.HomeAlunoService;
+import com.senai.infob.Projeto.Models.Aluno;
+import com.senai.infob.Projeto.Services.AlunoService;
 
 @RestController
 @RequestMapping("/aluno")
-public class HomeAlunoController {
+public class AlunoController {
     @Autowired
-    public HomeAlunoService homeAlunoService;
+    public AlunoService homeAlunoService;
 
     @PostMapping("/salvar")
-    public HomeAluno salvar (@RequestBody HomeAluno aluno, @RequestParam String senha) {    
+    public Aluno salvar (@RequestBody Aluno aluno, @RequestParam String senha) {    
         return homeAlunoService.salvar(aluno,senha);
     }
 
@@ -31,15 +31,15 @@ public class HomeAlunoController {
     }
 
     @PutMapping("/atualizar/{id}")
-        public HomeAluno  atualizarHomeAluno
-        (@PathVariable Integer id, @RequestBody HomeAluno aluno) 
+        public Aluno  atualizarHomeAluno
+        (@PathVariable Integer id, @RequestBody Aluno aluno) 
         {
-           return HomeAlunoService.atualizar(id, aluno);
+           return AlunoService.atualizar(id, aluno);
         }
 
 
     @GetMapping("/buscar/{id}")
-        public HomeAluno buscar (@PathVariable Integer id) {
+        public Aluno buscar (@PathVariable Integer id) {
             return homeAlunoService.getId(id);
         }
 }

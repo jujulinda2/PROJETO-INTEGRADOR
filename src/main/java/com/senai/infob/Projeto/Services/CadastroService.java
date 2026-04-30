@@ -1,18 +1,21 @@
 package com.senai.infob.Projeto.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.senai.infob.Projeto.Models.Cadastro;
-import com.senai.infob.Projeto.Repositories.CadastroRepositorie;
+import com.senai.infob.Projeto.Repositories.CadastroRepository;
 
 @Service
-public class CadastroService {
+  public class CadastroService {
     @Autowired
-    public CadastroRepositorie CadastroRepositorie;
+    public CadastroRepository cadastroRepository;
 
- public String login(String email, String senha) {
-   Cadastro cadastro = CadastroRepositorie.findByEmail(email);
+ public String login(Integer id, String senha) {
+   Cadastro cadastro = cadastroRepository.findById(id).get();
     if(cadastro != null && senha.equals(cadastro.getSenha())){
         return "login efetuado com sucesso";
     }
@@ -20,30 +23,33 @@ public class CadastroService {
     }
  public Cadastro salvar (Cadastro cadastro, String senha){
     if (cadastro.getSenha().equals(senha)){
-        return CadastroRepositorie.save(cadastro);
+        return cadastroRepository.save(cadastro);
 
     }
     return null;
     }
-    public boolean  delete(Integer id) {
-      Cadastro cadastro = CadastroRepositorie.findById(id).get();
+  public boolean  delete(Integer id) {
+      Cadastro cadastro = cadastroRepository.findById(id).get();
         if(cadastro != null) {
-        CadastroRepositorie.deleteById(id);
+        cadastroRepository.deleteById(id);
         return true;
     }
     return false;
     }
-    public Cadastro getId(Integer id){
-        return CadastroRepositorie.findById(id).get(); 
+  public Cadastro getId(Integer id){
+        return cadastroRepository.findById(id).get(); 
     }
 
-    public Cadastro atualizarCadastro(Cadastro cadastro, Integer id){
+  public Cadastro atualizarCadastro(Cadastro cadastro, Integer id){
         Cadastro e = getId(id);
          if (e != null){cadastro.setId(id);
-           CadastroRepositorie.save(cadastro);
+           cadastroRepository.save(cadastro);
          }
     
          return null;
     }
+  public List<Cadastro> listartodos(){
+       return cadastroRepository.findAll();
+    }  
 
 }

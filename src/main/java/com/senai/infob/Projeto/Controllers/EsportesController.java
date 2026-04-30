@@ -21,30 +21,10 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RestController
 @RequestMapping("/Esportes")
 public class EsportesController {
-    @Autowired
-    public EsportesService EsportesService;
-
-    @PostMapping("/salvar")
-    public Esportes salvar (@RequestBody Esportes Esportes, @RequestParam String senha) {    
-        return EsportesService.salvar(Esportes,senha);
-    }
-
-
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String senha){
-    return EsportesService.login(email, senha);
-    }
-    @PutMapping("/atualizar/{id}")
-        public Esportes atualizarEsportes(@PathVariable Integer id, @RequestBody Esportes Esportes) {
-            return EsportesService.atualizarEsportes(Esportes, id);
-        }
-
-    @GetMapping("/buscar/{id}")
-        public Esportes buscar (@PathVariable Integer id) {
-            return EsportesService.getId(id);
+   
         }
    
         
     
-    }
+    
 

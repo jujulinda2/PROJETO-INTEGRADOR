@@ -6,32 +6,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.Models.Agendamento;
-import com.senai.infob.Projeto.Repositories.Agendamentorepositorie;
+
+import com.senai.infob.Projeto.Repositories.AgendamentoRepository;
+
 
 @Service
 public class AgendamentoService {
     @Autowired
-    public Agendamentorepositorie AgendamentoRepositorie;
 
-     public Agendamento salvar (Agendamento agendamento, String senha){
-    if (agendamento.getSenha().equals(senha)){
-        return AgendamentoRepositorie.save(agendamento);
+    public AgendamentoRepository agendamentoRepository;
 
+     public Agendamento salvar (Agendamento agendamento){
+        return agendamentoRepository.save(agendamento);
     }
-    return null;
-    }
+
 
     public List<Agendamento> listartodos(){
-       return AgendamentoRepositorie.findAll();
+       return agendamentoRepository.findAll();
         }  
        
     public boolean  delete(Integer id) {
-       Agendamento agendamento = AgendamentoRepositorie.findById(id).get();
+       Agendamento agendamento = agendamentoRepository.findById(id).get();
         if(agendamento != null) {
-        AgendamentoRepositorie.deleteById(id);
+        agendamentoRepository.deleteById(id);
         return true;
     }
     return false;
     }
     
+    public Agendamento getId(Integer id){
+        return agendamentoRepository.findById(id).get(); 
+    }
+
+    
 }
+

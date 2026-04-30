@@ -1,5 +1,5 @@
 package com.senai.infob.Projeto.Repositories;
 
-public class QuadrasRepositorie {
+public class QuadrasRepository {
     
 }
