@@ -8,7 +8,7 @@
 - Maria Clara de Melo  
 
 ## Nome da Equipe/Empresa
-**Aliança Jovens de Mentes Digitais (AJM)**
+**Aliança Jovem de Mentes Digitais (AJM)**
 
 ## Nome do Produto/Aplicativo
 **Ação Atleta**
