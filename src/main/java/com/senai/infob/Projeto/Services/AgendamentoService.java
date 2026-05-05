@@ -37,6 +37,14 @@ public class AgendamentoService {
     public Agendamento getId(Integer id){
         return agendamentoRepository.findById(id).get(); 
     }
+     public Agendamento atualizarAgendamento(Agendamento agendamento, Integer id){
+        Agendamento e = getId(id);
+         if (e != null){agendamento.setId(id);
+           agendamentoRepository.save(agendamento);
+         }
+    
+         return null;
+    }
 
     
 }

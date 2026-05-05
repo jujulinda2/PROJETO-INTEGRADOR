@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.senai.infob.Projeto.Models.Esportes;
 
 @Repository
-public interface  EsporteRepository extends JpaRepository<Esportes, Integer>{ 
+public interface  EsportesRepository extends JpaRepository<Esportes, Integer>{ 
 }
