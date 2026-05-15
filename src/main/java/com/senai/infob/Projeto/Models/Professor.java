@@ -1,4 +1,4 @@
-package com.senai.infob.Projeto.Models;
+package com.senai.infob.Projeto.models;
 
 import java.util.List;
 
@@ -14,55 +14,45 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "professor")
 public class Professor {
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name= "senha")
-        private String senha;
-
-
     @OneToMany
     @JoinColumn(name = "usuario_id")
-    private List<Usuario> usuarios;
+    private List<Usuario> usuario;
 
-    
-    @OneToMany
-    @JoinColumn(name = "esporte_id")
-    private List<Esportes> esportes;
-    
+    @Column(name = "descricao")
+    private String descricao;
+
+    @Column(name = "instituicao")
+    private String instituicao;
+
+    @Column(name = "cref")
+    private String cref;
+
+    @Column(name = "documento_url")
+    private String documentoUrl;
+
+    @Column(name = "status_verificacao")
+    private String statusVerificacao;
+
     public Professor() {
     }
-    
-    public Professor(Integer id, List<Usuario> usuarios, List<Esportes> esportes, String email, String senha) {
+
+    public Professor(Integer id, List<Usuario> usuarios, String descricao, String instituicao, String cref,
+            String documentoUrl, String statusVerificacao) {
         this.id = id;
-        this.usuarios = usuarios;
-        this.esportes = esportes;
-        this.email = email;
-        this.senha = senha;
-    }
-    
-    public String getEmail() {
-        return email;
+        this.usuario = usuarios;
+        this.descricao = descricao;
+        this.instituicao = instituicao;
+        this.cref = cref;
+        this.documentoUrl = documentoUrl;
+        this.statusVerificacao = statusVerificacao;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
     public Integer getId() {
         return id;
     }
@@ -72,20 +62,52 @@ public class Professor {
     }
 
     public List<Usuario> getUsuarios() {
-        return usuarios;
+        return usuario;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+        this.usuario = usuarios;
     }
 
-    public List<Esportes> getEsportes() {
-        return esportes;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setEsportes(List<Esportes> esportes) {
-        this.esportes = esportes;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+
+    public String getInstituicao() {
+        return instituicao;
+    }
+
+    public void setInstituicao(String instituicao) {
+        this.instituicao = instituicao;
+    }
+
+    public String getCref() {
+        return cref;
+    }
+
+    public void setCref(String cref) {
+        this.cref = cref;
+    }
+
+    public String getDocumentoUrl() {
+        return documentoUrl;
+    }
+
+    public void setDocumentoUrl(String documentoUrl) {
+        this.documentoUrl = documentoUrl;
+    }
+
+    public String getStatusVerificacao() {
+        return statusVerificacao;
+    }
+
+    public void setStatusVerificacao(String statusVerificacao) {
+        this.statusVerificacao = statusVerificacao;
+    }
+
     
-
 }

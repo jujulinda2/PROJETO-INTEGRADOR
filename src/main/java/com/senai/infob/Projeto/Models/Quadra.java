@@ -1,7 +1,4 @@
-
-package com.senai.infob.Projeto.Models;
-
-import java.time.LocalDateTime;
+package com.senai.infob.Projeto.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "esportes")
-public class Esportes {
+@Table(name = "quadra")
+public class Quadra {
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,17 +18,21 @@ public class Esportes {
 
     @Column(name = "nome")
     private String nome;
+    
+    @Column(name = "endereco")
+    private String endereco;
 
-    @Column(name = "data_hora_aula")
-    private LocalDateTime data_hora_aula;
+    @Column(name = "status")
+    private Boolean status;
 
-    public Esportes() {
+    public Quadra() {
     }
 
-    public Esportes(Integer id, String nome, LocalDateTime data_hora_aula) {
+    public Quadra(Integer id, String nome, String endereco_, Boolean status) {
         this.id = id;
         this.nome = nome;
-        this.data_hora_aula = data_hora_aula;
+        this.endereco = endereco_;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -49,15 +51,21 @@ public class Esportes {
         this.nome = nome;
     }
 
-    public LocalDateTime getData_hora_aula() {
-        return data_hora_aula;
+    public String getEndereco_() {
+        return endereco;
     }
 
-    public void setData_hora_aula(LocalDateTime data_hora_aula) {
-        this.data_hora_aula = data_hora_aula;
+    public void setEndereco_(String endereco_) {
+        this.endereco = endereco_;
     }
 
-    //teste
+    public Boolean getStatus() {
+        return status;
+    }
 
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
+    
 }

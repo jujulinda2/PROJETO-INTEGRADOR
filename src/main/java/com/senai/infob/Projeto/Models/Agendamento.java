@@ -1,6 +1,6 @@
-package com.senai.infob.Projeto.Models;
+package com.senai.infob.Projeto.models;
 
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,42 +12,46 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "agendamento")
 public class Agendamento {
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "data_hora_inicio")
-    private Timestamp Data_hora_inicio;
+    private LocalDateTime dataHoraInicio;
     
     @Column(name = "data_hora_fim")
-    private Timestamp Data_hora_fim;
+    private LocalDateTime dataHoraFim;
 
     @Column(name = "aluno_id")
-    private Integer aluno_id;
+    private Integer alunoId;
 
     @Column(name = "quadra_id")
-    private Integer quadra_id;
+    private Integer quadraId;
 
     @Column(name = "professor_id")
-    private Integer professor_id;
+    private Integer professorId;
 
     @Column(name = "esportes_id")
-    private Integer esportes_id;
+    private Integer esportesId;
+
+    @Column(name = "status")
+    private String status;
 
     public Agendamento() {
     }
 
-    public Agendamento(Integer id, Timestamp data_hora_inicio, Timestamp data_hora_fim, Integer aluno_id,
-            Integer quadra_id, Integer professor_id, Integer esportes_id) {
+    public Agendamento(Integer id, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, Integer alunoId,
+            Integer quadraId, Integer professorId, Integer esportesId, String status) {
         this.id = id;
-        Data_hora_inicio = data_hora_inicio;
-        Data_hora_fim = data_hora_fim;
-        this.aluno_id = aluno_id;
-        this.quadra_id = quadra_id;
-        this.professor_id = professor_id;
-        this.esportes_id = esportes_id;
+        this.dataHoraInicio = dataHoraInicio;
+        this.dataHoraFim = dataHoraFim;
+        this.alunoId = alunoId;
+        this.quadraId = quadraId;
+        this.professorId = professorId;
+        this.esportesId = esportesId;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -58,52 +62,63 @@ public class Agendamento {
         this.id = id;
     }
 
-    public Timestamp getData_hora_inicio() {
-        return Data_hora_inicio;
+    public LocalDateTime getDataHoraInicio() {
+        return dataHoraInicio;
     }
 
-    public void setData_hora_inicio(Timestamp data_hora_inicio) {
-        Data_hora_inicio = data_hora_inicio;
+    public void setDataHoraInicio(LocalDateTime dataHoraInicio) {
+        this.dataHoraInicio = dataHoraInicio;
     }
 
-    public Timestamp getData_hora_fim() {
-        return Data_hora_fim;
+    public LocalDateTime getDataHoraFim() {
+        return dataHoraFim;
     }
 
-    public void setData_hora_fim(Timestamp data_hora_fim) {
-        Data_hora_fim = data_hora_fim;
+    public void setDataHoraFim(LocalDateTime dataHoraFim) {
+        this.dataHoraFim = dataHoraFim;
     }
 
-    public Integer getAluno_id() {
-        return aluno_id;
+    public Integer getAlunoId() {
+        return alunoId;
     }
 
-    public void setAluno_id(Integer aluno_id) {
-        this.aluno_id = aluno_id;
+    public void setAlunoId(Integer alunoId) {
+        this.alunoId = alunoId;
     }
 
-    public Integer getQuadra_id() {
-        return quadra_id;
+    public Integer getQuadraId() {
+        return quadraId;
     }
 
-    public void setQuadra_id(Integer quadra_id) {
-        this.quadra_id = quadra_id;
+    public void setQuadraId(Integer quadraId) {
+        this.quadraId = quadraId;
     }
 
-    public Integer getProfessor_id() {
-        return professor_id;
+    public Integer getProfessorId() {
+        return professorId;
     }
 
-    public void setProfessor_id(Integer professor_id) {
-        this.professor_id = professor_id;
+    public void setProfessorId(Integer professorId) {
+        this.professorId = professorId;
     }
 
-    public Integer getEsportes_id() {
-        return esportes_id;
+    public Integer getEsportesId() {
+        return esportesId;
     }
 
-    public void setEsportes_id(Integer esportes_id) {
-        this.esportes_id = esportes_id;
+    public void setEsportesId(Integer esportesId) {
+        this.esportesId = esportesId;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+
+    
 }

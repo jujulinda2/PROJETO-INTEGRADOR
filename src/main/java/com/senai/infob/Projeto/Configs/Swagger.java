@@ -1,4 +1,4 @@
-package com.senai.infob.Projeto.Configs;
+package com.senai.infob.Projeto.configs;
 
 import org.springframework.context.annotation.Configuration;
 

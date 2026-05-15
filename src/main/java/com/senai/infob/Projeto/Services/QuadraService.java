@@ -1,6 +1,6 @@
 package com.senai.infob.Projeto.services;
 
-public class ProfessorService {
+public class QuadraService {
 
 
 }

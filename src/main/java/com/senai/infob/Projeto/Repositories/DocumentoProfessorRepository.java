@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.senai.infob.Projeto.models.Agendamento;
 
 @Repository
-public interface AgendamentoRepository extends JpaRepository<Agendamento, Integer>{
+public interface DocumentoProfessorRepository extends JpaRepository<Agendamento, Integer>{
     
 }
-
 
