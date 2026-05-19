@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,34 +26,42 @@ public class Agendamento {
     @Column(name = "data_hora_fim")
     private LocalDateTime dataHoraFim;
 
-    @Column(name = "aluno_id")
-    private Integer alunoId;
-
-    @Column(name = "quadra_id")
-    private Integer quadraId;
-
-    @Column(name = "professor_id")
-    private Integer professorId;
-
     @Column(name = "esportes_id")
     private Integer esportesId;
 
     @Column(name = "status")
     private String status;
 
+     @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    private Usuario aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
+    @ManyToOne
+    @JoinColumn(name = "quadra_id")
+    private Quadra quadra;
+
+    @ManyToOne
+    @JoinColumn(name = "esporte_id")
+    private Esporte esporte;
+
     public Agendamento() {
     }
 
-    public Agendamento(Integer id, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, Integer alunoId,
-            Integer quadraId, Integer professorId, Integer esportesId, String status) {
+    public Agendamento(Integer id, LocalDateTime dataHoraInicio, LocalDateTime dataHoraFim, Integer esportesId,
+            String status, Usuario aluno, Professor professor, Quadra quadra, Esporte esporte) {
         this.id = id;
         this.dataHoraInicio = dataHoraInicio;
         this.dataHoraFim = dataHoraFim;
-        this.alunoId = alunoId;
-        this.quadraId = quadraId;
-        this.professorId = professorId;
         this.esportesId = esportesId;
         this.status = status;
+        this.aluno = aluno;
+        this.professor = professor;
+        this.quadra = quadra;
+        this.esporte = esporte;
     }
 
     public Integer getId() {
@@ -78,30 +88,6 @@ public class Agendamento {
         this.dataHoraFim = dataHoraFim;
     }
 
-    public Integer getAlunoId() {
-        return alunoId;
-    }
-
-    public void setAlunoId(Integer alunoId) {
-        this.alunoId = alunoId;
-    }
-
-    public Integer getQuadraId() {
-        return quadraId;
-    }
-
-    public void setQuadraId(Integer quadraId) {
-        this.quadraId = quadraId;
-    }
-
-    public Integer getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(Integer professorId) {
-        this.professorId = professorId;
-    }
-
     public Integer getEsportesId() {
         return esportesId;
     }
@@ -118,6 +104,37 @@ public class Agendamento {
         this.status = status;
     }
 
+    public Usuario getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Usuario aluno) {
+        this.aluno = aluno;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Quadra getQuadra() {
+        return quadra;
+    }
+
+    public void setQuadra(Quadra quadra) {
+        this.quadra = quadra;
+    }
+
+    public Esporte getEsporte() {
+        return esporte;
+    }
+
+    public void setEsporte(Esporte esporte) {
+        this.esporte = esporte;
+    }
 
 
     

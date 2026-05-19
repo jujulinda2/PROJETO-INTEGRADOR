@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,23 +20,24 @@ public class DocumentoProfessor {
     @Column(name="id")
     private Integer id;
 
-    @Column(name = "professor_id")
-    private Integer professorId;
-
     @Column(name="documento_url")
     private String documentoUrl;
 
     @Column(name = "data_envio")
     private LocalDateTime dataEnvio;
 
+        @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
     public DocumentoProfessor() {
     }
 
-    public DocumentoProfessor(Integer id, Integer professorId, String documentoUrl, LocalDateTime dataEnvio) {
+    public DocumentoProfessor(Integer id, String documentoUrl, LocalDateTime dataEnvio, Professor professor) {
         this.id = id;
-        this.professorId = professorId;
         this.documentoUrl = documentoUrl;
         this.dataEnvio = dataEnvio;
+        this.professor = professor;
     }
 
     public Integer getId() {
@@ -43,14 +46,6 @@ public class DocumentoProfessor {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(Integer professorId) {
-        this.professorId = professorId;
     }
 
     public String getDocumentoUrl() {
@@ -69,6 +64,15 @@ public class DocumentoProfessor {
         this.dataEnvio = dataEnvio;
     }
 
- 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+
+  
     
 }
