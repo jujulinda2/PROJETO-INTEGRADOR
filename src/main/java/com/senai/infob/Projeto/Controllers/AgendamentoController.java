@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infob.Projeto.models.Agendamento;
@@ -24,7 +23,7 @@ public class AgendamentoController {
     private AgendamentoService agendamentoService;
 
     @GetMapping("/contar-agendamentos")
-    public Long contaragendamentos(@RequestParam String param) {
+    public Long contarAgendamentos() {
         return agendamentoService.contarAgendamentos();
     }
     
@@ -41,7 +40,7 @@ public class AgendamentoController {
     }
 
     @DeleteMapping("/deletar-agendamento/{id}")
-    public String deletaragendamento(@PathVariable Integer id){
+    public String deletarAgendamento(@PathVariable Integer id){
         if(agendamentoService.deletarAgendamento(id)){
             return "Agendamento removido com sucesso!";
         }

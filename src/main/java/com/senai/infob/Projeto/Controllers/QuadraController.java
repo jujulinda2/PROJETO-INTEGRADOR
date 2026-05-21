@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infob.Projeto.models.Quadra;
@@ -24,7 +24,7 @@ public class QuadraController {
     private QuadraService quadraService;
 
     @GetMapping("/contar-quadra")
-    public Long contarQuadra(@RequestParam String param) {
+    public Long contarQuadra() {
         return quadraService.contarQuadra();
     }
     

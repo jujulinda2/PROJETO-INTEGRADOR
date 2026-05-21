@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infob.Projeto.models.Professor;
@@ -26,7 +25,7 @@ public class ProfessorController {
     private ProfessorService professorService;
 
      @GetMapping("/contar-professor")
-    public Long contarProfessor(@RequestParam String param) {
+    public Long contarProfessor() {
         return professorService.contarProfessor();
     }
     
