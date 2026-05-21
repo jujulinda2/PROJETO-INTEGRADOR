@@ -52,8 +52,8 @@ public class EsporteController {
     }
     
     @PostMapping("/salvar-Esporte")
-    public Esporte cadastrarEsporte(@RequestBody Esporte Esporte) {
-        return esporteService.cadastrarEsporte(Esporte);
+    public Esporte cadastrarEsporte(@RequestBody Esporte esporte) {
+        return esporteService.cadastrarEsporte(esporte);
     }
 
     @PutMapping("/atualizar-Esporte/{id}")
