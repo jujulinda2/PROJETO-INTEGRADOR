@@ -60,5 +60,4 @@ public class AgendamentoController {
         }
         return "Não foi possível atualizar o agendamento!";
     }
-
 }
