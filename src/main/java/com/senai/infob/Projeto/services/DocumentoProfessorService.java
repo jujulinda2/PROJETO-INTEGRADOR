@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.DocumentoProfessor;
@@ -18,7 +19,7 @@ public class DocumentoProfessorService {
         return documentoProfessorRepository.count();
     }
 
-    public DocumentoProfessor buscarDocumentoProfessor(Integer id) {
+    public DocumentoProfessor buscarDocumentoProfessor(@NonNull Integer id) {
         return documentoProfessorRepository.findById(id).get();
     }
 
@@ -26,7 +27,7 @@ public class DocumentoProfessorService {
         return documentoProfessorRepository.findAll();
     }
 
-    public Boolean deletarDocumentoProfessor(Integer id) {
+    public Boolean deletarDocumentoProfessor(@NonNull Integer id) {
         if (documentoProfessorRepository.existsById(id)) {
             documentoProfessorRepository.deleteById(id);
             return true;
@@ -34,11 +35,11 @@ public class DocumentoProfessorService {
         return false;
     }
 
-    public DocumentoProfessor cadastrarDocumentoProfessor(DocumentoProfessor documentoProfessor) {
+    public DocumentoProfessor cadastrarDocumentoProfessor(@NonNull DocumentoProfessor documentoProfessor) {
         return documentoProfessorRepository.save(documentoProfessor);
     }
 
-    public DocumentoProfessor atualizarDocumentoProfessor(Integer id, DocumentoProfessor documentoProfessor) {
+    public DocumentoProfessor atualizarDocumentoProfessor(@NonNull Integer id, DocumentoProfessor documentoProfessor) {
         DocumentoProfessor documentoProfessorRecuperado = buscarDocumentoProfessor(id);
         if(documentoProfessorRecuperado != null){
             documentoProfessorRecuperado.setId(id);

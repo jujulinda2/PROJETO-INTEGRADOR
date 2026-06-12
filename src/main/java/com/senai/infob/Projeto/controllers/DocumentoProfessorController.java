@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class DocumentoProfessorController {
     
 
     @GetMapping("/buscar-DocumentoProfessor/{id}")
-    public DocumentoProfessor buscarDocumentoProfessor(@PathVariable Integer id){ {
+    public DocumentoProfessor buscarDocumentoProfessor(@PathVariable @NonNull Integer id){ {
         return documentoProfessorService.buscarDocumentoProfessor(id);
     }
     }
@@ -40,7 +41,7 @@ public class DocumentoProfessorController {
     }
 
     @DeleteMapping("/deletar-DocumentoProfessor/{id}")
-    public String deletarDocumentoProfessor(@PathVariable Integer id){
+    public String deletarDocumentoProfessor(@PathVariable @NonNull Integer id){
         if(documentoProfessorService.deletarDocumentoProfessor(id)){
             return "DocumentoProfessor removido com sucesso!";
         }
@@ -48,12 +49,12 @@ public class DocumentoProfessorController {
     }
     
     @PostMapping("/salvar-DocumentoProfessor")
-    public DocumentoProfessor cadastrarDocumentoProfessor(@RequestBody DocumentoProfessor DocumentoProfessor) {
+    public DocumentoProfessor cadastrarDocumentoProfessor(@RequestBody @NonNull DocumentoProfessor DocumentoProfessor) {
         return documentoProfessorService.cadastrarDocumentoProfessor(DocumentoProfessor);
     }
 
     @PutMapping("/atualizar-DocumentoProfessor/{id}")
-    public String atualizarDocumentoProfessor(@PathVariable Integer id, @RequestBody DocumentoProfessor DocumentoProfessor) {
+    public String atualizarDocumentoProfessor(@PathVariable @NonNull Integer id, @RequestBody DocumentoProfessor DocumentoProfessor) {
         if(documentoProfessorService.atualizarDocumentoProfessor(id, DocumentoProfessor) != null){
             return "DocumentoProfessor atualizado com sucesso!";
         }

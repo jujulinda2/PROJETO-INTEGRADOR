@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.Esporte;
@@ -18,7 +19,7 @@ public class EsporteService {
         return esporteRepository.count();
     }
 
-    public Esporte buscarEsporte(Integer id) {
+    public Esporte buscarEsporte(@NonNull Integer id) {
         return esporteRepository.findById(id).get();
     }
 
@@ -26,7 +27,7 @@ public class EsporteService {
         return esporteRepository.findAll();
     }
 
-    public Boolean deletarEsporte(Integer id) {
+    public Boolean deletarEsporte(@NonNull Integer id) {
         if (esporteRepository.existsById(id)) {
             esporteRepository.deleteById(id);
             return true;
@@ -34,11 +35,11 @@ public class EsporteService {
         return false;
     }
 
-    public Esporte cadastrarEsporte(Esporte esporte) {
+    public Esporte cadastrarEsporte(@NonNull Esporte esporte) {
         return esporteRepository.save(esporte);
     }
 
-    public Esporte atualizarEsporte(Integer id, Esporte esporte) {
+    public Esporte atualizarEsporte(@NonNull Integer id, Esporte esporte) {
         Esporte esporteRecuperado = buscarEsporte(id);
         if(esporteRecuperado != null){
             esporteRecuperado.setId(id);

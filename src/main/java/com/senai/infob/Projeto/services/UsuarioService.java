@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.Usuario;
@@ -18,7 +19,7 @@ public class UsuarioService {
         return usuarioRepository.count();
     }
 
-    public Usuario buscarUsuario(Integer id) {
+    public Usuario buscarUsuario(@NonNull Integer id) {
         return usuarioRepository.findById(id).get();
     }
 
@@ -26,7 +27,7 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Boolean deletarUsuario(Integer id) {
+    public Boolean deletarUsuario(@NonNull Integer id) {
         if(usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
             return true;
@@ -34,11 +35,11 @@ public class UsuarioService {
         return false;
     }
 
-    public Usuario cadastrarUsuario(Usuario usuario) {
+    public Usuario cadastrarUsuario(@NonNull Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario atualizarUsuario(Integer id, Usuario usuario) {
+    public Usuario atualizarUsuario(@NonNull Integer id, Usuario usuario) {
         Usuario usuarioRecuperado = buscarUsuario(id);
         if(usuarioRecuperado != null) {
             usuarioRecuperado.setId(id);

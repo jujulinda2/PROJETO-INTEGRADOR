@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class UsuarioController {
     
 
     @GetMapping("/buscar-usuarios/{id}")
-    public Usuario buscarUsuario(@PathVariable Integer id){ {
+    public Usuario buscarUsuario(@PathVariable @NonNull Integer id){ {
         return usuarioService.buscarUsuario(id);
     }
     }
@@ -40,7 +41,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/deletar-Usuario/{id}")
-    public String deletarUsuario(@PathVariable Integer id){
+    public String deletarUsuario(@PathVariable @NonNull Integer id){
         if(usuarioService.deletarUsuario(id)){
             return "Usuario removido com sucesso!";
         }
@@ -48,12 +49,12 @@ public class UsuarioController {
     }
     
     @PostMapping("/salvar-Usuario")
-    public Usuario cadastrarUsuario(@RequestBody Usuario Usuario) {
+    public Usuario cadastrarUsuario(@RequestBody @NonNull Usuario Usuario) {
         return usuarioService.cadastrarUsuario(Usuario);
     }
 
     @PutMapping("/atualizar-Usuario/{id}")
-    public String atualizarUsuario(@PathVariable Integer id, @RequestBody Usuario Usuario) {
+    public String atualizarUsuario(@PathVariable @NonNull Integer id, @RequestBody Usuario Usuario) {
         if(usuarioService.atualizarUsuario(id, Usuario) != null){
             return "Usuario atualizado com sucesso!";
         }

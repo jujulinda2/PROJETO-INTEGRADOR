@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.Quadra;
@@ -18,7 +19,7 @@ public class QuadraService {
         return quadraRepository.count();
     }
 
-    public Quadra buscarQuadra(Integer id) {
+    public Quadra buscarQuadra(@NonNull Integer id) {
         return quadraRepository.findById(id).get();
     }
 
@@ -26,7 +27,7 @@ public class QuadraService {
         return quadraRepository.findAll();
     }
 
-    public Boolean deletarQuadra(Integer id) {
+    public Boolean deletarQuadra(@NonNull Integer id) {
         if (quadraRepository.existsById(id)) {
             quadraRepository.deleteById(id);
             return true;
@@ -34,11 +35,11 @@ public class QuadraService {
         return false;
     }
 
-    public Quadra cadastrarQuadra(Quadra quadra) {
+    public Quadra cadastrarQuadra(@NonNull Quadra quadra) {
         return quadraRepository.save(quadra);
     }
 
-    public Quadra atualizarQuadra(Integer id, Quadra quadra) {
+    public Quadra atualizarQuadra(@NonNull Integer id, Quadra quadra) {
         Quadra quadraRecuperado = buscarQuadra(id);
         if(quadraRecuperado != null){
             quadraRecuperado.setId(id);

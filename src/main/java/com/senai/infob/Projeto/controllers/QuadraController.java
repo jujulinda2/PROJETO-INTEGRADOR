@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,7 @@ public class QuadraController {
     
 
     @GetMapping("/buscar-Quadras/{id}")
-    public Quadra buscarQuadra(@PathVariable Integer id){ {
+    public Quadra buscarQuadra(@PathVariable @NonNull Integer id){ {
         return quadraService.buscarQuadra(id);
     }
     }
@@ -41,7 +42,7 @@ public class QuadraController {
     }
 
     @DeleteMapping("/deletar-Quadra/{id}")
-    public String deletarQuadra(@PathVariable Integer id){
+    public String deletarQuadra(@PathVariable @NonNull Integer id){
         if(quadraService.deletarQuadra(id)){
             return "Quadra removida com sucesso!";
         }
@@ -49,12 +50,12 @@ public class QuadraController {
     }
     
     @PostMapping("/salvar-Quadra")
-    public Quadra cadastrarQuadra(@RequestBody Quadra Quadra) {
+    public Quadra cadastrarQuadra(@RequestBody @NonNull Quadra Quadra) {
         return quadraService.cadastrarQuadra(Quadra);
     }
 
     @PutMapping("/atualizar-Quadra/{id}")
-    public String atualizarQuadra(@PathVariable Integer id, @RequestBody Quadra Quadra) {
+    public String atualizarQuadra(@PathVariable @NonNull Integer id, @RequestBody Quadra Quadra) {
         if(quadraService.atualizarQuadra(id, Quadra) != null){
             return "Quadra atualizada com sucesso!";
         }

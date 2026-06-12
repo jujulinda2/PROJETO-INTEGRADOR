@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +33,7 @@ public class EsporteController {
     
 
     @GetMapping("/buscar-esporte/{id}")
-    public Esporte buscarEsporte(@PathVariable Integer id){ {
+    public Esporte buscarEsporte(@PathVariable @NonNull Integer id){ {
         return esporteService.buscarEsporte(id);
     }
     }
@@ -43,7 +44,7 @@ public class EsporteController {
     }
 
     @DeleteMapping("/deletar-Esporte/{id}")
-    public String deletarEsporte(@PathVariable Integer id){
+    public String deletarEsporte(@PathVariable @NonNull Integer id){
         if(esporteService.deletarEsporte(id)){
             return "Esporte removido com sucesso!";
         }
@@ -51,12 +52,12 @@ public class EsporteController {
     }
     
     @PostMapping("/salvar-Esporte")
-    public Esporte cadastrarEsporte(@RequestBody Esporte esporte) {
+    public Esporte cadastrarEsporte(@RequestBody @NonNull Esporte esporte) {
         return esporteService.cadastrarEsporte(esporte);
     }
 
     @PutMapping("/atualizar-Esporte/{id}")
-    public String atualizarEsporte(@PathVariable Integer id, @RequestBody Esporte Esporte) {
+    public String atualizarEsporte(@PathVariable @NonNull Integer id, @RequestBody Esporte Esporte) {
         if(esporteService.atualizarEsporte(id, Esporte) != null){
             return "Esporte atualizado com sucesso!";
         }

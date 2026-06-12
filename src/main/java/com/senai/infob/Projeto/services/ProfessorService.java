@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.Professor;
@@ -18,7 +19,7 @@ public class ProfessorService {
         return professorRepository.count();
     }
 
-    public Professor buscarProfessor(Integer id) {
+    public Professor buscarProfessor(@NonNull Integer id) {
         return professorRepository.findById(id).get();
     }
 
@@ -26,7 +27,7 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
-    public Boolean deletarProfessor(Integer id) {
+    public Boolean deletarProfessor(@NonNull Integer id) {
         if (professorRepository.existsById(id)) {
             professorRepository.deleteById(id);
             return true;
@@ -34,11 +35,11 @@ public class ProfessorService {
         return false;
     }
 
-    public Professor cadastrarProfessor(Professor professor) {
+    public Professor cadastrarProfessor(@NonNull Professor professor) {
         return professorRepository.save(professor);
     }
 
-    public Professor atualizarProfessor(Integer id, Professor professor) {
+    public Professor atualizarProfessor(@NonNull Integer id, Professor professor) {
         Professor professorRecuperado = buscarProfessor(id);
         if(professorRecuperado != null){
             professorRecuperado.setId(id);

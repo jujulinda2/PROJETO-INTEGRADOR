@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.senai.infob.Projeto.models.Agendamento;
@@ -17,7 +18,7 @@ public class AgendamentoService {
         return agendamentoRepository.count();
     }
 
-    public Agendamento buscarAgendamentos(Integer id) {
+    public Agendamento buscarAgendamentos(@NonNull Integer id) {
         return agendamentoRepository.findById(id).get();
     }
 
@@ -25,7 +26,7 @@ public class AgendamentoService {
         return agendamentoRepository.findAll();
     }
 
-    public Boolean deletarAgendamento(Integer id) {
+    public Boolean deletarAgendamento(@NonNull Integer id) {
         if (agendamentoRepository.existsById(id)) {
             agendamentoRepository.deleteById(id);
             return true;
@@ -33,11 +34,11 @@ public class AgendamentoService {
         return false;
     }
 
-    public Agendamento cadastrarAgendamento(Agendamento agendamento) {
+    public Agendamento cadastrarAgendamento(@NonNull Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
 
-    public Agendamento atualizarAgendamento(Integer id, Agendamento agendamento) {
+    public Agendamento atualizarAgendamento(@NonNull Integer id, Agendamento agendamento) {
         Agendamento agendamentoRecuperado = buscarAgendamentos(id);
         if(agendamentoRecuperado != null){
             agendamentoRecuperado.setId(id);

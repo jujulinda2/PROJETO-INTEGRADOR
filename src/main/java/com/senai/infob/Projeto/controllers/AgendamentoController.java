@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class AgendamentoController {
     
 
     @GetMapping("/buscar-agendamentos/{id}")
-    public Agendamento buscarAgendamento(@PathVariable Integer id){ {
+    public Agendamento buscarAgendamento(@PathVariable @NonNull Integer id){ {
         return agendamentoService.buscarAgendamentos(id);
     }
     }
@@ -40,7 +41,7 @@ public class AgendamentoController {
     }
 
     @DeleteMapping("/deletar-agendamento/{id}")
-    public String deletarAgendamento(@PathVariable Integer id){
+    public String deletarAgendamento(@PathVariable @NonNull Integer id){
         if(agendamentoService.deletarAgendamento(id)){
             return "Agendamento removido com sucesso!";
         }
@@ -48,12 +49,12 @@ public class AgendamentoController {
     }
     
     @PostMapping("/salvar-agendamento")
-    public Agendamento cadastrarAgendamento(@RequestBody Agendamento agendamento) {
+    public Agendamento cadastrarAgendamento(@RequestBody @NonNull Agendamento agendamento) {
         return agendamentoService.cadastrarAgendamento(agendamento);
     }
 
     @PutMapping("/atualizar-agendamento/{id}")
-    public String atualizarAgendamento(@PathVariable Integer id, @RequestBody Agendamento agendamento) {
+    public String atualizarAgendamento(@PathVariable @NonNull Integer id, @RequestBody Agendamento agendamento) {
         if(agendamentoService.atualizarAgendamento(id, agendamento) != null){
             return "Agendamento atualizado com sucesso!";
         }

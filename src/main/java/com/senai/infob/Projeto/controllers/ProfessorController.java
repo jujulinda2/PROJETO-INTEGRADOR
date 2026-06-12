@@ -3,6 +3,7 @@ package com.senai.infob.Projeto.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,7 +32,7 @@ public class ProfessorController {
     
 
     @GetMapping("/buscar-professor/{id}")
-    public Professor buscarProfessor(@PathVariable Integer id){ {
+    public Professor buscarProfessor(@PathVariable @NonNull Integer id){ {
         return professorService.buscarProfessor(id);
     }
     }
@@ -42,7 +43,7 @@ public class ProfessorController {
     }
 
     @DeleteMapping("/deletar-Professor/{id}")
-    public String deletarProfessor(@PathVariable Integer id){
+    public String deletarProfessor(@PathVariable @NonNull Integer id){
         if(professorService.deletarProfessor(id)){
             return "Professor removido com sucesso!";
         }
@@ -50,12 +51,12 @@ public class ProfessorController {
     }
     
     @PostMapping("/salvar-Professor")
-    public Professor cadastrarProfessor(@RequestBody Professor Professor) {
+    public Professor cadastrarProfessor(@RequestBody @NonNull Professor Professor) {
         return professorService.cadastrarProfessor(Professor);
     }
 
     @PutMapping("/atualizar-Professor/{id}")
-    public String atualizarProfessor(@PathVariable Integer id, @RequestBody Professor Professor) {
+    public String atualizarProfessor(@PathVariable @NonNull Integer id, @RequestBody Professor Professor) {
         if(professorService.atualizarProfessor(id, Professor) != null){
             return "Professor atualizado com sucesso!";
         }
