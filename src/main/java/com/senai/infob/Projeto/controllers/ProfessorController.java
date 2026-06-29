@@ -63,4 +63,20 @@ public class ProfessorController {
         return "Não foi possível atualizar o Professor!";
     }
 
+    @GetMapping("/pendentes")
+    public List<Professor> listarPendentes(){
+        return professorService.listarPendentes();
+    }
+
+    @PutMapping("/{id}/aprovar")
+    public Professor aprovarProfessor(@PathVariable Integer id){
+    return professorService.aprovarProfessor(id);
+    }
+
+    @PutMapping("/{id}/rejeitar")
+    public Professor rejeitarProfessor(@PathVariable Integer id){
+    return professorService.rejeitarProfessor(id);
+
+}
+
 }

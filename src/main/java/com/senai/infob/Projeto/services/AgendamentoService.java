@@ -35,6 +35,18 @@ public class AgendamentoService {
     }
 
     public Agendamento cadastrarAgendamento(@NonNull Agendamento agendamento) {
+    List<Agendamento> agendamentos =
+    agendamentoRepository.findByQuadraId(
+            agendamento.getQuadra().getId());
+    for (Agendamento a : agendamentos) {
+        boolean conflito =
+         agendamento.getDataHoraInicio().isBefore(a.getDataHoraFim()) &&
+            agendamento.getDataHoraFim().isAfter(a.getDataHoraInicio());
+        if (conflito) {
+            throw new RuntimeException(
+            "Já existe um agendamento para esta quadra nesse horário.");
+    }
+    }
         return agendamentoRepository.save(agendamento);
     }
 

@@ -36,22 +36,39 @@ public class ProfessorService {
     }
 
     public Professor cadastrarProfessor(@NonNull Professor professor) {
+        professor.setStatusVerificacao("PENDENTE");
         return professorRepository.save(professor);
     }
 
     public Professor atualizarProfessor(@NonNull Integer id, Professor professor) {
-        Professor professorRecuperado = buscarProfessor(id);
-        if(professorRecuperado != null){
-            professorRecuperado.setId(id);
-            if(professor.getId() != null){
-                professorRecuperado.setId(professor.getId());
-            }
-            if(professor.getId() != null){
-                professorRecuperado.setId(professor.getId());
-            }
-            return professorRepository.save(professorRecuperado);
-        }
-        return null;
+    Professor professorRecuperado = buscarProfessor(id);
+    if (professorRecuperado != null) {
+        professorRecuperado.setDescricao(professor.getDescricao());
+        professorRecuperado.setInstituicao(professor.getInstituicao());
+        professorRecuperado.setCref(professor.getCref());
+        professorRecuperado.setDocumentoUrl(professor.getDocumentoUrl());
+        professorRecuperado.setUsuario(professor.getUsuario());
+        professorRecuperado.setEsportes(professor.getEsportes());
+        return professorRepository.save(professorRecuperado);
     }
+    return null;
+}
+
+    public List<Professor> listarPendentes(){
+        return professorRepository.findByStatusVerificacao("PENDENTE");
+    }
+
+    public Professor aprovarProfessor(Integer id){
+        Professor professor = buscarProfessor(id);
+        professor.setStatusVerificacao("APROVADO");
+        return professorRepository.save(professor);
+    }
+
+    public Professor rejeitarProfessor(Integer id){
+    Professor professor = buscarProfessor(id);
+    professor.setStatusVerificacao("REJEITADO");
+    return professorRepository.save(professor);
+
+}
 
 }
