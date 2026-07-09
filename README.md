@@ -1,11 +1,11 @@
 # PROJETO-INTEGRADOR
 
 ## Equipe
-- Ana Luiza de Melo  
-- Anna Julia Borges  
-- Julia de Jesus  
-- Julia Pinheiro  
-- Maria Clara de Melo  
+- Ana Luiza de Melo Silva 
+- Anna Julia Borges Rodrigues  
+- Julia de Jesus Machado Ulerich
+- Julia Pinheiro Bull 
+- Maria Clara de Melo Silva 
 
 ## Nome da Equipe/Empresa
 **Aliança Jovem de Mentes Digitais (AJM)**
