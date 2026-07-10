@@ -1,11 +1,11 @@
 # PROJETO-INTEGRADOR
 
 ## Equipe
-- Ana Luiza de Melo  
-- Anna Julia Borges  
-- Julia de Jesus  
-- Julia Pinheiro  
-- Maria Clara de Melo  
+- Ana Luiza de Melo Silva 
+- Anna Julia Borges Rodrigues  
+- Julia de Jesus Machado Ulerich
+- Julia Pinheiro Bull 
+- Maria Clara de Melo Silva 
 
 ## Nome da Equipe/Empresa
 **Aliança Jovem de Mentes Digitais (AJM)**
@@ -14,7 +14,7 @@
 **Ação Atleta**
 
 ## Descrição do Projeto
-Criação de um site que seleciona professores de Educação Física, treinadores ou profissionais que estejam cursando a faculdade e que desejam dar aulas e estejam disponíveis.
+Criação de um site que seleciona professores de Educação Física, treinadores ou profissionais que estejam cursando a faculdade que desejam dar aulas e estejam disponíveis.
 
 O site conecta esses profissionais com alunos que desejam praticar esportes, funcionando como uma **ação social acessível para todos**.
 
