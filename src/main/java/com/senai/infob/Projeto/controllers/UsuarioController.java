@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.senai.infob.Projeto.models.Usuario;
@@ -23,6 +24,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @PostMapping("/login")
+    public String login(@RequestParam String email, @RequestParam String senha) {
+        return usuarioService.login(email, senha);
+    }
+
+
+
     @GetMapping("/contar-usuarios")
     public Long contarUsuarios() {
         return usuarioService.contarUsuarios();
@@ -30,9 +38,8 @@ public class UsuarioController {
     
 
     @GetMapping("/buscar-usuarios/{id}")
-    public Usuario buscarUsuario(@PathVariable @NonNull Integer id){ {
+    public Usuario buscarUsuario(@PathVariable @NonNull Integer id) {
         return usuarioService.buscarUsuario(id);
-    }
     }
 
     @GetMapping("/listar-Usuarios")
